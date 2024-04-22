@@ -3,7 +3,7 @@ const app = express();
 const COMPANY = {
     name: `Stanley and Jimmy's Game and Sip`,
   isOpen: true,
-  address: '742 Evergreen Rd, Mapleview, OS 45502',
+  address: '123 Random Street, New York, NY 11205',
   phone: '555-321-9876',
 staff: [
     {
@@ -50,26 +50,27 @@ staff: [
 pastWork: [
     {
         id:1,
-        projectname: "Divide and Conquer",
+        projectName: "Divide and Conquer",
         location: "New York City",
         duration: '3 years',
-        description: "Successfully opened up an X number of franchise locations across the New York City area.",
+        description: "Successfully opened up a number of franchise locations across the New York City area.",
     },
     {
         id:2,
-        projectname: "Mix and Sip",
+        projectName: "Mix and Sip",
         location: "Dallas",
         duration: '8 months',
         description: "Partnering with vendors to bring a stable blend of popular refreshments.",
     },
     {
         id:3,
-        projectname: "User Outreach",
+        projectName: "User Outreach",
         location: "California",
         duration: '6 months',
         description: "Engaging with the user base to establish connections and foot traffic.",
     },
 ],
+history: `Newly founded in 2024 by Stanley Jean and Jimmy Helm. The two founders got together for drinks one day and just decided how amazing it would be to bring gamers together in a peaceful environment where they could not only "touch grass" but feel some relief from their daily raging and fustrations. The inspiration come from the tradition internet cafe but with a little twist. With that said, Welcome to the era of Game and Sip!`
 };
 
 
@@ -90,15 +91,27 @@ app.get('/past-work', (req, res) => {
     });
   });
 
-  app.get('/staff', (req, res) => {
+  app.get("/past-work/:projectname", (req, res) => {
+    const projectName = req.params.projectName;
+   
+    //This is an extra step from Chat GPT to make the UI experience look better looking by capitalizing the first letter of the category.
+    const capitalizedCategoryType = categoryType.charAt(0).toUpperCase() + categoryType.slice(1);
+    res.render("project.ejs", {
+        menuItems, categoryType: capitalizedCategoryType
+    });
+});
+
+  app.get('/staff/:staff', (req, res) => {
+    const staff = req.params.staff;
+    const capitalizedStaffName = staff.charAt(0).toUpperCase() + staff.slice(1);
     res.render('staff.ejs', {
-      staff: COMPANY.staff,
+        staff: capitalizedStaffName
     });
   });
 
   app.get('/company-history', (req, res) => {
     res.render('company-history.ejs', {
-      COMPANY,
+      history: COMPANY.history,
     });
   });
 
@@ -108,6 +121,25 @@ app.get('/past-work', (req, res) => {
     });
   });
 
+  app.get('/links', (req, res) => {
+    res.render('links.ejs', {
+      COMPANY
+    });
+  });
+
 app.listen(3000, () => {
     console.log("Listening on port 3000");
   });
+
+
+
+
+
+
+
+
+
+
+//   <a href="/past-work/divideandconquer"> <h3><p>Divide and Conquer</p></h3></a>
+//   <a href="/past-work/mixandsip">  <h3><p>Mix and Sip</p></h3></a>
+//     <a href="/past-work/useroutreach"> <h3><p>User Outreach</p></h3></a>
