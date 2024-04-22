@@ -50,21 +50,21 @@ staff: [
 pastWork: [
     {
         id:1,
-        projectName: "Divide and Conquer",
+        project: "Divide and Conquer",
         location: "New York City",
         duration: '3 years',
         description: "Successfully opened up a number of franchise locations across the New York City area.",
     },
     {
         id:2,
-        projectName: "Mix and Sip",
+        project: "Mix and Sip",
         location: "Dallas",
         duration: '8 months',
         description: "Partnering with vendors to bring a stable blend of popular refreshments.",
     },
     {
         id:3,
-        projectName: "User Outreach",
+        project: "User Outreach",
         location: "California",
         duration: '6 months',
         description: "Engaging with the user base to establish connections and foot traffic.",
@@ -91,13 +91,12 @@ app.get('/past-work', (req, res) => {
     });
   });
 
-  app.get("/past-work/:projectname", (req, res) => {
-    const projectName = req.params.projectName;
-   
-    //This is an extra step from Chat GPT to make the UI experience look better looking by capitalizing the first letter of the category.
-    const capitalizedCategoryType = categoryType.charAt(0).toUpperCase() + categoryType.slice(1);
+  app.get("/past-work/:project", (req, res) => {
+    const projectName = req.params.project;
+    //const projectItems = COMPANY.pastWork.filter(item => item.project === projectName)
+    const capitalizedProjectName = projectName.charAt(0).toUpperCase() + projectName.slice(1);
     res.render("project.ejs", {
-        menuItems, categoryType: capitalizedCategoryType
+     projectName: capitalizedProjectName, pastWork: COMPANY.pastWork,
     });
 });
 
