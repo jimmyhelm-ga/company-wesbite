@@ -91,12 +91,13 @@ app.get("/past-work", (req, res) => {
 
 app.get("/past-work/:project", (req, res) => {
   const projectName = req.params.project;
-  //const projectItems = COMPANY.pastWork.filter(item => item.project === projectName)
+  const projectItems = COMPANY.pastWork.filter(item => { return item.project === projectName})
   const capitalizedProjectName =
     projectName.charAt(0).toUpperCase() + projectName.slice(1);
+  
   res.render("project.ejs", {
     projectName: capitalizedProjectName,
-    pastWork: COMPANY.pastWork,
+    project: projectItems[0],
   });
 });
 

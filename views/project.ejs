@@ -10,13 +10,11 @@
     <h1><%= projectName %></h1>
     <h2>Overview</h2>
     <ul>
-      <% pastWork.forEach(item=> { %>
       <li>
-        <p>Location: <%= item.location %></p>
-        <p>Duration: <%= item.duration %></p>
-        <p>Description: <%= item.description %></p>
+        <p>Location: <%= project.location %></p>
+        <p>Duration: <%= project.duration %></p>
+        <p>Description: <%= project.description %></p>
       </li>
-      <% }); %>
     </ul>
   </body>
 </html>
