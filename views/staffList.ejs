@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff</title>
+  </head>
+  <%- include('./partials/nav') %>
+  <body>
+    <h1>Say Hi To The Staff!</h1>
+    <h2>Thanks for Checking Us Out!</h2>
+    <a href="/staffList/stanley">
+      <h3><p>Stanley</p></h3></a
+    >
+    <ul>
+      <% staffList.forEach(item=> { %> <% if (item.staffList === "Stanley") { %>
+      <li>
+        <p>Title: <%= item.title %></p>
+        <p>Years of Experience: <%= item.yearsOfExperience %></p>
+        <p>Contact: <%= item.contact %></p>
+        <p>Bio: <%= item.bio %></p>
+      </li>
+      <% }}); %>
+    </ul>
+
+    <a href="/staffList/jimmy">
+        <h3><p>Jimmy</p></h3></a
+      >
+      <ul>
+        <% staffList.forEach(item=> { %> <% if (item.staffList === "Jimmy") { %>
+        <li>
+          <p>Title: <%= item.title %></p>
+          <p>Years of Experience: <%= item.yearsOfExperience %></p>
+          <p>Contact: <%= item.contact %></p>
+          <p>Bio: <%= item.bio %></p>
+        </li>
+        <% }}); %>
+      </ul>
+
+      <a href="/staffList/stacy">
+        <h3><p>Stacy</p></h3></a
+      >
+      <ul>
+        <% staffList.forEach(item=> { %> <% if (item.staffList === "Stacy") { %>
+        <li>
+          <p>Title: <%= item.title %></p>
+          <p>Years of Experience: <%= item.yearsOfExperience %></p>
+          <p>Contact: <%= item.contact %></p>
+          <p>Bio: <%= item.bio %></p>
+        </li>
+        <% }}); %>
+      </ul>
+
+      <a href="/staffList/bobby">
+        <h3><p>Bobby</p></h3></a
+      >
+      <ul>
+        <% staffList.forEach(item=> { %> <% if (item.staffList === "Bobby") { %>
+        <li>
+          <p>Title: <%= item.title %></p>
+          <p>Years of Experience: <%= item.yearsOfExperience %></p>
+          <p>Contact: <%= item.contact %></p>
+          <p>Bio: <%= item.bio %></p>
+        </li>
+        <% }}); %>
+      </ul>
+
+      <a href="/staffList/mike">
+        <h3><p>Mike</p></h3></a
+      >
+      <ul>
+        <% staffList.forEach(item=> { %> <% if (item.staffList === "Mike") { %>
+        <li>
+          <p>Title: <%= item.title %></p>
+          <p>Years of Experience: <%= item.yearsOfExperience %></p>
+          <p>Contact: <%= item.contact %></p>
+          <p>Bio: <%= item.bio %></p>
+        </li>
+        <% }}); %>
+      </ul>
+
+  </body>
+</html>

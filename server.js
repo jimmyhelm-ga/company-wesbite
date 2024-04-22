@@ -6,7 +6,7 @@ const COMPANY = {
   address: "123 Random Street, New York, NY 11205",
   phone: "555-321-9876",
   email: "blah@mailsac.com",
-  staff: [
+  staffList: [
     {
       id: 1,
       name: "Stanley",
@@ -100,13 +100,20 @@ app.get("/past-work/:project", (req, res) => {
   });
 });
 
-app.get("/staff/:staff", (req, res) => {
-  const staff = req.params.staff;
+app.get("/staffList", (req, res) => {
+    res.render("staffList.ejs", {
+        staffList: COMPANY.staffList
+      });
+  });
+
+app.get("/staffList/:staff", (req, res) => {
+  const staff = req.params.staffList;
   const capitalizedStaffName = staff.charAt(0).toUpperCase() + staff.slice(1);
   res.render("staff.ejs", {
     staff: capitalizedStaffName,
   });
 });
+
 
 app.get("/company-history", (req, res) => {
   res.render("company-history.ejs", {
