@@ -132,6 +132,12 @@ app.get("/links", (req, res) => {
   res.render("links.ejs")
 });
 
+app.get('/menu/:category', (req, res) => {
+  const category = req.params.category;
+
+  res.render('category', { category: category, menu: RESTAURANT.menu.filter(item => item.category === category) });
+});
+
 app.listen(3000, () => {
   console.log("Listening on port 3000");
 });
